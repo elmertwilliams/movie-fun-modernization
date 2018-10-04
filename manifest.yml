@@ -1,30 +1,34 @@
 ---
 memory: 1G
 instances: 1
-services:
-- movie-fun-sso
-- movie-fun-registry
 applications:
 - name: album-service
   path: applications/album-service/build/libs/album-service-1.1.0-SNAPSHOT.jar
   routes:
-    - route: album-service-{UNIQUE_IDENTIFIER}.apps.chicken.pal.pivotal.io
+    - route: album-service-0607de38-c739-11e8-9750-d71ef279d381.apps.evans.pal.pivotal.io
   services:
-  - album-database
-  - moviefun-s3
+    - album-database
+    - moviefun-s3
+    - movie-fun-sso
+    - movie-fun-registry
   env:
     GRANT_TYPE: client_credentials
 - name: movie-service
   path: applications/movie-service/build/libs/movie-service-1.1.0-SNAPSHOT.jar
   routes:
-    - route: movie-service-{UNIQUE_IDENTIFIER}.apps.chicken.pal.pivotal.io
+    - route: movie-service-0607de38-c739-11e8-9750-d71ef279d381.apps.evans.pal.pivotal.io
   services:
-  - movie-database
+    - movie-database
+    - movie-fun-sso
+    - movie-fun-registry
   env:
     GRANT_TYPE: client_credentials
 - name: movie-fun-app
   path: applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war
   routes:
-    - route: movie-fun-app-{UNIQUE_IDENTIFIER}.apps.chicken.pal.pivotal.io
+    - route: movie-fun-app-0607de38-c739-11e8-9750-d71ef279d381.apps.evans.pal.pivotal.io
   services:
-  - moviefun-s3
+    - moviefun-s3
+    - movie-fun-sso
+    - movie-fun-registry
+    - movie-fun-config-server
