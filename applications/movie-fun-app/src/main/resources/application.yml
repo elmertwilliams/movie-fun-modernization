@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: movie-fun-app
   mvc.view:
     prefix: /WEB-INF/
     suffix: .jsp
@@ -8,14 +10,14 @@ logging.level:
   org.superbiz.moviefun: DEBUG
 
 s3:
-  accessKey: <access key id>
-  secretKey: <secret access key>
-  bucketName: <name of the bucket>
+  accessKey: UWZS1TETB50M9QEEKMPC
+  secretKey: MdTouo62b7CO3XCWZiKhAsT2OvjQpzDtUo8tR7NW
+  bucketName: movie-fun-course
 
 albums:
-  url: http://localhost:8081/albums
+  url: //album-service/albums
 movies:
-  url: http://localhost:8082/movies
+  url: //movie-service/movies
 
 security:
   basic:
